@@ -16,3 +16,10 @@ Assurez-vous que la bibliothèque **Raylib** est installée et configurée corre
 
 - **Raylib** : Une bibliothèque simple pour le développement de jeux 2D.
 Vous pouvez l'installer en suivant les instructions [ici](https://www.raylib.com/).
+
+### 🖼️ Aperçu du jeu
+
+Voici un aperçu de ce à quoi ressemble la simulation dans le programme :
+
+![Aperçu du Jeu de la Vie](C:\Users\axelf\iCloudDrive\Documents\Axel Fournier\ISEN\C\Jeu_de_la_vie)
+
