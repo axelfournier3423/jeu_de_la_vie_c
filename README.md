@@ -21,5 +21,5 @@ Vous pouvez l'installer en suivant les instructions [ici](https://www.raylib.com
 
 Voici un aperçu de ce à quoi ressemble la simulation dans le programme :
 
-![Aperçu du Jeu de la Vie](image_jeu.png)
+![Aperçu du Jeu de la Vie](photo_jeu.png)
 
