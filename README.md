@@ -21,5 +21,5 @@ Vous pouvez l'installer en suivant les instructions [ici](https://www.raylib.com
 
 Voici un aperçu de ce à quoi ressemble la simulation dans le programme :
 
-![Aperçu du Jeu de la Vie](C:\Users\axelf\iCloudDrive\Documents\Axel Fournier\ISEN\C\Jeu_de_la_vie)
+![Aperçu du Jeu de la Vie](image_jeu.png)
 
