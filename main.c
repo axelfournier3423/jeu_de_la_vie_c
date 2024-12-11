@@ -2,9 +2,9 @@
 #include <stdlib.h>
 #include <time.h>
 
-#define TAILLE_CELLULE 10
-#define LARGEUR_BOUTON 50
-#define HAUTEUR_BOUTON 50
+#define CELLULE_TAILLE 10
+#define BOUTON_LARGEUR 50
+#define BOUTON_HAUTEUR 50
 
 /**
  * @brief Crée une grille de cellules aléatoires.
@@ -12,11 +12,11 @@
  * Cette fonction remplit une grille avec des cellules vivantes et des cellules mortes
  * Chaque cellule a 50% de chance d'être vivante.
  *
- * @param lignes Le nombre de lignes dans la grille.
- * @param colonnes Le nombre de colonnes dans la grille.
- * @param grille Tableau représentant la grille de cellules.
+ * @param lignes Nombre de lignes
+ * @param colonnes Nombre de colonnes
+ * @param grille Tableau qui représente kla grille
  */
-void creer_grille(int lignes, int colonnes, int grille[lignes][colonnes])
+void creer_grille_jeu(int lignes, int colonnes, int grille[lignes][colonnes])
 {
     for (int i = 0; i < lignes; i++)
     {
@@ -30,13 +30,13 @@ void creer_grille(int lignes, int colonnes, int grille[lignes][colonnes])
 /**
  * @brief Affiche la grille.
  *
- * Cette fonction parcourt la grille et dessine chaque cellule vivante à l'écran.
+ * Cette fonction parcourt la grille et dessine chaque cellule vivante.
  *
- * @param lignes Nombre de lignes dans la grille.
- * @param colonnes Nombre de colonnes dans la grille.
- * @param grille Tableau représentant la grille de cellules.
+ * @param lignes Nombre de lignes
+ * @param colonnes Nombre de colonnes
+ * @param grille Tableau qui représente la grille
  */
-void afficher_grille(int lignes, int colonnes, int grille[lignes][colonnes])
+void afficher_grille_jeu(int lignes, int colonnes, int grille[lignes][colonnes])
 {
     for (int i = 0; i < lignes; i++)
     {
@@ -44,26 +44,26 @@ void afficher_grille(int lignes, int colonnes, int grille[lignes][colonnes])
         {
             if (grille[i][j] == 1)
             {
-                DrawRectangle(j * TAILLE_CELLULE, i * TAILLE_CELLULE, TAILLE_CELLULE, TAILLE_CELLULE, BLUE);
+                DrawRectangle(j * CELLULE_TAILLE, i * CELLULE_TAILLE, CELLULE_TAILLE, CELLULE_TAILLE, BLUE);
             }
         }
     }
 }
 
 /**
- * @brief Met à jour la grille selon les règles du jeu de la vie.
+ * @brief Met à jour la grille selon les règles du jeu.
  *
- * Cette fonction met à jour la grille de cellules en appliquant les règles du jeu de la vie :
+ * Cette fonction met à jour la grille de cellules en fonction des règles du jeu :
  * - Une cellule vivante reste vivante si elle a 2 ou 3 voisins vivants, sinon elle meurt.
- * - Une cellule morte devient vivante si elle a exactement 3 voisins vivants.
+ * - Une cellule morte devient vivante si elle a 3 voisins vivants.
  *
- * @param lignes Nombre de lignes dans la grille.
- * @param colonnes Nombre de colonnes dans la grille.
- * @param grille Tableau représentant la grille de cellules.
+ * @param lignes Nombre de lignes
+ * @param colonnes Nombre de colonnes
+ * @param grille Tableau qui représente la grille
  */
-void majgrille(int lignes, int colonnes, int grille[lignes][colonnes])
+void maj_grille_jeu(int lignes, int colonnes, int grille[lignes][colonnes])
 {
-    int copie[lignes][colonnes]; // copie de la grille actuelle
+    int copie[lignes][colonnes];
 
     for (int i = 0; i < lignes; i++)
     {
@@ -125,16 +125,15 @@ void majgrille(int lignes, int colonnes, int grille[lignes][colonnes])
 /**
  * @brief Fonction principale du programme.
  *
- * Crée une fenêtre, initialise la grille et permet d'interagir avec la simulation
- * via des boutons pour controler la vitesse, la pause, et redémarrer.
+ * Crée une fenêtre, initialise la grille et permet via des boutons, de controler la vitesse, la pause, et redémarrer le jeu.
  *
  */
 int main()
 {
     const int largeur = 800;
     const int hauteur = 600;
-    const int lignes = hauteur / TAILLE_CELLULE;
-    const int colonnes = largeur / TAILLE_CELLULE;
+    const int lignes = hauteur / CELLULE_TAILLE;
+    const int colonnes = largeur / CELLULE_TAILLE;
 
     int vitesse_simulation = 10;
     bool simulation_pause = false;
@@ -145,17 +144,17 @@ int main()
     int grille[lignes][colonnes];
 
     srand(time(NULL));
-    creer_grille(lignes, colonnes, grille);
+    creer_grille_jeu(lignes, colonnes, grille);
 
-    Rectangle boutonAugmenter = {largeur - 110, 80, LARGEUR_BOUTON, HAUTEUR_BOUTON};
-    Rectangle boutonDiminuer = {largeur - 60, 80, LARGEUR_BOUTON, HAUTEUR_BOUTON};
-    Rectangle boutonPlay = {largeur - 110, 150, LARGEUR_BOUTON + 20, HAUTEUR_BOUTON};
-    Rectangle boutonPause = {largeur - 110, 210, LARGEUR_BOUTON + 20, HAUTEUR_BOUTON};
+    Rectangle boutonAugmenter = {largeur - 110, 80, BOUTON_LARGEUR, BOUTON_HAUTEUR};
+    Rectangle boutonDiminuer = {largeur - 60, 80, BOUTON_LARGEUR, BOUTON_HAUTEUR};
+    Rectangle boutonPlay = {largeur - 110, 150, BOUTON_LARGEUR + 20, BOUTON_HAUTEUR};
+    Rectangle boutonPause = {largeur - 110, 210, BOUTON_LARGEUR + 20, BOUTON_HAUTEUR};
 
-    Rectangle boutonRestart = {largeur - 110, 270, LARGEUR_BOUTON + 20, HAUTEUR_BOUTON};
+    Rectangle boutonRestart = {largeur - 110, 270, BOUTON_LARGEUR + 20, BOUTON_HAUTEUR};
 
-    Rectangle boutonRouge = {largeur - 110, hauteur - 110, LARGEUR_BOUTON, HAUTEUR_BOUTON};
-    Rectangle boutonVert = {largeur - 60, hauteur - 110, LARGEUR_BOUTON, HAUTEUR_BOUTON};
+    Rectangle boutonRouge = {largeur - 110, hauteur - 110, BOUTON_LARGEUR, BOUTON_HAUTEUR};
+    Rectangle boutonVert = {largeur - 60, hauteur - 110, BOUTON_LARGEUR, BOUTON_HAUTEUR};
 
     Color couleur_fond = BLACK;
 
@@ -191,7 +190,7 @@ int main()
 
         if (CheckCollisionPointRec(GetMousePosition(), boutonRestart) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
         {
-            creer_grille(lignes, colonnes, grille);
+            creer_grille_jeu(lignes, colonnes, grille);
         }
 
         if (CheckCollisionPointRec(GetMousePosition(), boutonRouge) && IsMouseButtonPressed(MOUSE_BUTTON_LEFT))
@@ -207,10 +206,10 @@ int main()
         BeginDrawing();
         ClearBackground(couleur_fond);
 
-        afficher_grille(lignes, colonnes, grille);
+        afficher_grille_jeu(lignes, colonnes, grille);
         if (!simulation_pause)
         {
-            majgrille(lignes, colonnes, grille);
+            maj_grille_jeu(lignes, colonnes, grille);
         }
 
         DrawRectangle(largeur - 170, 0, 170, hauteur, DARKGRAY);
